@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { MovieList } from "./components/MovieList";
 import "./App.css";
-
-import { useGenreRepository } from "./repositories/GenreRepository";
-import { useMovieRepository } from "./repositories/MovieRepository";
+import { RepositoryFactory } from "./repositories/RepositoryFactory";
 import { Genre } from "./models/Genre";
-const { getGenreList } = useGenreRepository();
-const { getMovieByGenres } = useMovieRepository();
+import { _MovieRepository } from "./repositories/MovieRepository";
+import { _GenreRepository } from "./repositories/GenreRepository";
+
+const genreRepository = RepositoryFactory.get("genre") as _GenreRepository;
 
 function App() {
   const [genreList, setGenre] = useState<Genre[]>([]);
@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetch = async () => {
       // ジャンル一覧を取得
-      setGenre(await getGenreList());
+      setGenre(await genreRepository.getGenreList());
     };
     fetch();
   }, []);

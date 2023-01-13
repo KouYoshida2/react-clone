@@ -1,11 +1,11 @@
 import repository from "./client/apiClient";
 const key = import.meta.env.VITE_API_KEY;
-export const useGenreRepository = (): GenreRepository => {
+export class GenreRepository implements GenreRepository {
   /**
    * - ジャンルの一覧を取得する
    * @returns
    */
-  const getGenreList = async () => {
+  public getGenreList = async () => {
     console.log("データとりいった");
     // const { data } = await repository.get(`/genre/movie/list?api_key=${key}`);
     const data = {
@@ -33,10 +33,8 @@ export const useGenreRepository = (): GenreRepository => {
     };
     return data.genres;
   };
+}
 
-  return { getGenreList };
-};
-
-interface GenreRepository {
+export interface _GenreRepository {
   getGenreList: () => Promise<any[]>;
 }

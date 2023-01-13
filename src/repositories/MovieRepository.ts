@@ -1,13 +1,13 @@
 import { Movie } from "../models/Movie";
 import repository from "./client/apiClient";
 const key = import.meta.env.VITE_API_KEY;
-export const useMovieRepository = (): useMovieRepository => {
+export class MovieRepository implements _MovieRepository {
   /**
    * - 指定ジャンルの映画を取得する
    * @param genre
    * @returns
    */
-  const getMovieByGenres = async (genre: number) => {
+  public getMovieByGenres = async (genre: number) => {
     console.log("データとりいった");
     // const { data } = await repository.get(
     //   `/discover/movie?with_genres=${genre}&api_key=${key}`
@@ -374,11 +374,9 @@ export const useMovieRepository = (): useMovieRepository => {
 
     return result;
   };
+}
 
-  return { getMovieByGenres };
-};
-
-interface useMovieRepository {
+export interface _MovieRepository {
   getMovieByGenres: (genre: number) => Promise<any[]>;
 }
 

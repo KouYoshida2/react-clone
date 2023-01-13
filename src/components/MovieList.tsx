@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Genre } from "../models/Genre";
 import { Movie } from "../models/Movie";
-import { useMovieRepository } from "../repositories/MovieRepository";
+import { _MovieRepository } from "../repositories/MovieRepository";
+import { RepositoryFactory } from "../repositories/RepositoryFactory";
 import { RMovie } from "./RMovie";
-const { getMovieByGenres } = useMovieRepository();
+
+const movieRepository = RepositoryFactory.get("movie") as _MovieRepository;
 
 interface Props {
   genre: Genre;
@@ -16,7 +18,7 @@ export const MovieList = ({ genre }: Props) => {
   // ジャンルデータをトリガーに番組配列を取得
   useEffect(() => {
     const fetch = async () => {
-      setMovieList(await getMovieByGenres(genre.id));
+      setMovieList(await movieRepository.getMovieByGenres(genre.id));
     };
     fetch();
   }, []);
