@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { MovieList } from "./components/MovieList";
-import "./App.css";
-import { RepositoryFactory } from "./repositories/RepositoryFactory";
-import { Genre } from "./models/Genre";
-import { _MovieRepository } from "./repositories/MovieRepository";
-import { _GenreRepository } from "./repositories/GenreRepository";
+import reactLogo from "../assets/react.svg";
+import { MovieList } from "../components/MovieList";
+import "../App.css";
+import { RepositoryFactory } from "../repositories/RepositoryFactory";
+import { Genre } from "../models/Genre";
+import { _MovieRepository } from "../repositories/MovieRepository";
+import { _GenreRepository } from "../repositories/GenreRepository";
+import { Link } from "react-router-dom";
 
 const genreRepository = RepositoryFactory.get("genre") as _GenreRepository;
 
@@ -31,6 +32,10 @@ function App() {
 
   return (
     <div className="App bg-gray-800">
+      <ul className="text-white">
+        <li>{<Link to="/my-list">マイリストページ</Link>}</li>
+        <li>{<Link to="/review-list">レビューページ</Link>}</li>
+      </ul>
       <div className="font-bold text-2xl text-white">{list}</div>
     </div>
   );
