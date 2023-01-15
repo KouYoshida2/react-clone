@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   roots: ["<rootDir>/src"],
 
   testMatch: [
@@ -7,5 +7,11 @@ module.exports = {
   ],
   transform: {
     "^.+\\.(ts|tsx)$": ["ts-jest"],
+  },
+  globals: {
+    "ts-jest": {
+      useESM: true,
+      isolatedModules: false,
+    },
   },
 };
