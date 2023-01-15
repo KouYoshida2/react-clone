@@ -1,44 +1,20 @@
-import { useEffect, useState } from "react";
-import reactLogo from "../assets/react.svg";
-import { MovieList } from "../components/MovieList";
-import "../App.css";
-import { RepositoryFactory } from "../repositories/RepositoryFactory";
-import { Genre } from "../models/Genre";
-import { _MovieRepository } from "../repositories/MovieRepository";
-import { _GenreRepository } from "../repositories/GenreRepository";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./home";
+import { Review } from "./Review";
+import { MyList } from "./MyList";
+import { TheHeader } from "../components/TheHeader";
 
-const genreRepository = RepositoryFactory.get("genre") as _GenreRepository;
-
-function App() {
-  const [genreList, setGenre] = useState<Genre[]>([]);
-
-  // 非同期処理はuseEffectで処理するらしい
-  useEffect(() => {
-    const fetch = async () => {
-      // ジャンル一覧を取得
-      setGenre(await genreRepository.getGenreList());
-    };
-    fetch();
-  }, []);
-
-  const list = genreList.slice(1, 6).map((item) => {
-    return (
-      <div key={item.id}>
-        <MovieList key={item.id} genre={item}></MovieList>
-      </div>
-    );
-  });
-
+export const App = () => {
   return (
     <div className="App bg-gray-800">
-      <ul className="text-white">
-        <li>{<Link to="/my-list">マイリストページ</Link>}</li>
-        <li>{<Link to="/review-list">レビューページ</Link>}</li>
-      </ul>
-      <div className="font-bold text-2xl text-white">{list}</div>
+      <BrowserRouter>
+        <TheHeader></TheHeader>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route path="/my-list" element={<MyList></MyList>} />
+          <Route path="/review-list" element={<Review></Review>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
-
-export default App;
+};
