@@ -26,5 +26,13 @@ jobs:
 workflows:
   my-workflow:
     jobs:
-      - build
-      - test
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+
+      - test:
+          filters:
+            branches:
+              only: -main
