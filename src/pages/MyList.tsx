@@ -1,13 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RMovie } from "../components/RMovie";
 import { UseMyListContext } from "../main";
 import { Movie } from "../models/Movie";
 
 export const MyList = () => {
-  const { toggleMyList, MyList: _MyList } = useContext(UseMyListContext);
+  const { MyList: _MyList } = useContext(UseMyListContext);
+
+  // 表示するお気に入りのリストはここで管理する
+  const [myListItems, setMyListItem] = useState(_MyList);
 
   const list: any = [];
-  _MyList.forEach((value, key) => {
+  myListItems.forEach((value, key) => {
     list.push(value);
   });
 
@@ -16,7 +19,13 @@ export const MyList = () => {
       <p className="text-white">マイリストページ</p>
       <div className="flex">
         {list.map((movie: Movie) => {
-          return <RMovie key={movie.id} movie={movie}></RMovie>;
+          return (
+            <RMovie
+              setMyListItem={setMyListItem}
+              key={movie.id}
+              movie={movie}
+            ></RMovie>
+          );
         })}
       </div>
     </div>
