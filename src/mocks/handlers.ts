@@ -1,4 +1,6 @@
 import { rest } from "msw";
+import { faker } from "@faker-js/faker";
+
 const key = import.meta.env.VITE_API_KEY;
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -59,7 +61,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg",
             genre_ids: [878, 12, 28],
-            id: 76600,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Avatar: The Way of Water",
             overview:
@@ -76,7 +78,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/zrnzWEQSJ0jtufPGR4SEnB6s1q1.jpg",
             genre_ids: [28, 35, 80, 53],
-            id: 899112,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Violent Night",
             overview:
@@ -93,7 +95,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/53BC9F2tpZnsGno2cLhzvGprDYS.jpg",
             genre_ids: [14, 28, 12],
-            id: 736526,
+            id: faker.datatype.uuid(),
             original_language: "no",
             original_title: "Troll",
             overview:
@@ -110,7 +112,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
             genre_ids: [14, 28, 878],
-            id: 436270,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Black Adam",
             overview:
@@ -127,7 +129,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/o0s4XsEDfDlvit5pDRKjzXR4pp2.jpg",
             genre_ids: [28, 12, 14, 878],
-            id: 19995,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Avatar",
             overview:
@@ -144,7 +146,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/gkseI3CUfQtMKX41XD4AxDzhQb7.jpg",
             genre_ids: [28, 18, 36],
-            id: 724495,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "The Woman King",
             overview:
@@ -161,7 +163,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/rodjjIJ8oh9nuBp86PhojcYHTEN.jpg",
             genre_ids: [28, 53, 80, 18],
-            id: 740952,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Savage Salvation",
             overview:
@@ -178,7 +180,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/mYQSbZdGX0JJb49NLO04UA0iFEU.jpg",
             genre_ids: [28, 35, 80],
-            id: 1015963,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "High Heat",
             overview:
@@ -195,7 +197,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/edOt2jNyCbb8SQSvulD2sRRJhmA.jpg",
             genre_ids: [28, 80, 53],
-            id: 873126,
+            id: faker.datatype.uuid(),
             original_language: "it",
             original_title: "Il mio nome è vendetta",
             overview:
@@ -212,7 +214,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/ecaB1LUoQE1ylZJVF5KLRTkewt8.jpg",
             genre_ids: [28, 35, 80],
-            id: 683328,
+            id: faker.datatype.uuid(),
             original_language: "id",
             original_title: "The Big 4",
             overview:
@@ -229,7 +231,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
             genre_ids: [28, 12, 878],
-            id: 505642,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Black Panther: Wakanda Forever",
             overview:
@@ -246,7 +248,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/6YRQ8l93ZEs6x4rZojWoHIWdguK.jpg",
             genre_ids: [28, 80],
-            id: 1024546,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Detective Knight: Rogue",
             overview:
@@ -263,7 +265,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/kmzppWh7ljL6K9fXW72bPN3gKwu.jpg",
             genre_ids: [14, 28, 35, 80],
-            id: 1013860,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "R.I.P.D. 2: Rise of the Damned",
             overview:
@@ -280,7 +282,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/90ZZIoWQLLEXSVm0ik3eEQBinul.jpg",
             genre_ids: [28, 27, 53],
-            id: 988233,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Hex",
             overview:
@@ -297,7 +299,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/maxRhndtC4BJABvqRPvYNu69CHA.jpg",
             genre_ids: [36, 28, 18],
-            id: 551271,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Medieval",
             overview:
@@ -314,7 +316,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
             genre_ids: [10752, 28, 18],
-            id: 966220,
+            id: faker.datatype.uuid(),
             original_language: "uk",
             original_title: "Снайпер. Білий ворон",
             overview:
@@ -331,7 +333,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/eSdpZZQubPSZ47qppFfUPbKsWlw.jpg",
             genre_ids: [28, 16, 12, 35, 10751],
-            id: 417859,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Puss in Boots",
             overview:
@@ -348,7 +350,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg",
             genre_ids: [28, 18],
-            id: 361743,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "Top Gun: Maverick",
             overview:
@@ -365,7 +367,7 @@ export const handler = [
             adult: false,
             backdrop_path: "/vmDa8HijINCAFYKqsMz0YM3sVyE.jpg",
             genre_ids: [28, 80, 53],
-            id: 747803,
+            id: faker.datatype.uuid(),
             original_language: "en",
             original_title: "One Way",
             overview:

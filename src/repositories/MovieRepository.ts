@@ -1,28 +1,43 @@
+import { Genre } from "../models/Genre";
 import { Movie } from "../models/Movie";
 import repository from "./client/apiClient";
 const key = import.meta.env.VITE_API_KEY;
+
 export class MovieRepository implements _MovieRepository {
   /**
    * - 指定ジャンルの映画を取得する
    * @param genre
    * @returns
    */
-  public getMovieByGenres = async (genre: number) => {
-    console.log("データとりいった");
+
+  public getMovieByGenre = async (genre: number) => {
     const { data } = await repository.get(
       `/discover/movie?with_genres=${genre}&api_key=${key}`
     );
 
-    const result = data.results.map((item: movieData) => {
-      if (item.video) console.log(item.video);
-      return new Movie(
-        item.id,
-        item.release_date,
-        item.title,
-        item.poster_path,
-        item.overview,
-        item.genre_ids
-      );
+    const moviesData = data.results as movieData[];
+
+    return moviesData.map(
+      (item: movieData) =>
+        new Movie(
+          item.id,
+          item.release_date,
+          item.title,
+          item.poster_path,
+          item.overview,
+          item.genre_ids
+        )
+    );
+  };
+
+  public getMovieByGenres = async (genres: number[]) => {
+    const moviesArray = await Promise.all(
+      genres.map((genre: number) => this.getMovieByGenre(genre))
+    );
+
+    const result = {} as Record<number, Movie[]>;
+    genres.forEach((genre, index) => {
+      result[genre] = moviesArray[index];
     });
 
     return result;
@@ -30,7 +45,8 @@ export class MovieRepository implements _MovieRepository {
 }
 
 export interface _MovieRepository {
-  getMovieByGenres: (genre: number) => Promise<any[]>;
+  getMovieByGenres: (genre: number[]) => Promise<Record<number, Movie[]>>;
+  getMovieByGenre: (genre: number) => Promise<Movie[]>;
 }
 
 // jsonデータの型

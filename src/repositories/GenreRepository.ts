@@ -6,9 +6,8 @@ export class GenreRepository implements GenreRepository {
    * @returns
    */
   public getGenreList = async () => {
-    console.log("データとりいった");
     const { data } = await repository.get(`/genre/movie/list?api_key=${key}`);
-    return data.genres;
+    return data.genres.slice(1, 5);
   };
 }
 
