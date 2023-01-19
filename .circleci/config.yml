@@ -33,6 +33,10 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
 
       - run:
+          name: install dependencies
+          command: yarn install
+
+      - run:
           name: unit test
           command: yarn test
 
