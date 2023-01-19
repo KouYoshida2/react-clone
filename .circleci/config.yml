@@ -48,4 +48,5 @@ workflows:
       - test:
           filters:
             branches:
-              only: -main
+              only:
+                - main
